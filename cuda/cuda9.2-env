@@ -1,0 +1,4 @@
+export PATH=$PATH:/usr/lib/cuda-9.2/bin
+export CUDADIR=/usr/lib/cuda-9.2
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/cuda-9.2/lib64
+
