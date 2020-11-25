@@ -116,7 +116,7 @@ command! MakeTags !ctags -R .
 
 " Tweaks for browsing
 let g:netrw_banner=0        " disable annoying banner
-let g:netrw_browse_split=4  " open in prior window
+" let g:netrw_browse_split=4  " open in prior window
 let g:netrw_altv=1          " open splits to the right
 let g:netrw_liststyle=3     " tree view
 let g:netrw_list_hide=netrw_gitignore#Hide()
@@ -178,5 +178,51 @@ set makeprg=bundle\ exec\ rspec\ -f\ QuickfixFormatter
 "                     - Classroom Teaching
 "                     - Internal Training
 "                       - Encouragement
-
-
+call plug#begin()
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'https://github.com/mileszs/ack.vim.git'
+Plug 'leafgarland/typescript-vim'
+Plug 'ianks/vim-tsx'
+Plug 'sbdchd/neoformat'
+Plug 'junegunn/fzf'
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
+Plug 'preservim/nerdtree'
+Plug 'evanleck/vim-svelte'
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'dracula/vim', { 'name': 'dracula' }
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+Plug 'ryanoasis/vim-devicons'
+call plug#end()
+colorscheme dracula 
+" EXTRAS
+let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:typescript_indent_disable = 1
+let g:deoplete#enable_at_startup = 1
+let NERDTreeShowHidden=1
+let g:airline_powerline_fonts = 1
+set tabstop=2
+set shiftwidth=4
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+set number
+set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types\ 11
+set encoding=UTF-8
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gr <Plug>(coc-references)
+nnoremap <C-p> :GFiles<CR>
+" NERDTree Options
+map <C-n> :NERDTreeToggle<CR>
